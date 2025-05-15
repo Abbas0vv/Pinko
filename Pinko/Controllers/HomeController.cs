@@ -14,7 +14,7 @@ namespace Pinko.Controllers
 
         public IActionResult Index()
         {
-            var employees = _employeeRepository.GetAll();
+            var employees = _employeeRepository.GetSome(3);
             return View(employees);
         }
     }

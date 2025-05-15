@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Pinko.Migrations
 {
     /// <inheritdoc />
-    public partial class EmployeeAndUser : Migration
+    public partial class UserAndEmployee : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

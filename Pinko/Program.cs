@@ -1,4 +1,7 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Pinko.Database;
 using Pinko.Database.Interfaces;
 using Pinko.Database.Models.Account;
@@ -25,6 +28,20 @@ namespace Pinko
             builder.Services
                 .AddControllersWithViews()
                 .AddRazorRuntimeCompilation();
+
+            builder.Services.Configure<IdentityOptions>(opt =>
+            {
+                // Password settings.
+                opt.Password.RequireNonAlphanumeric = false;
+                opt.Password.RequireUppercase = false;
+                opt.Password.RequiredLength = 6;
+                opt.Password.RequireDigit = true;
+
+                // Lockout settings.
+                opt.Lockout.AllowedForNewUsers = true;
+                opt.Lockout.MaxFailedAccessAttempts = 5;
+                opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+            });
 
             builder.Services.AddScoped<EmployeeRepository>();
 

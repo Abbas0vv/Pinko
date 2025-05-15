@@ -53,8 +53,16 @@
                             <li><a href="#work-process">Work Process</a></li>
                             <li><a href="#testimonials">Testimonials</a></li>
                             <li><a href="#pricing-plans">Pricing Tables</a></li>
-                            <li><a href="#blog">Blog Entries</a></li>
-                            <li><a href="#contact-us">Contact Us</a></li>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li><a>@User.Identity.Name</a></li>
+                                <li><a asp-controller="Account" asp-action="LogOut">Log Out</a></li>
+                            }
+                            else
+                            {
+                                <li><a asp-controller="Account" asp-action="Login">Login</a></li>
+                                <li><a asp-controller="Account" asp-action="Register">Register</a></li>
+                            }
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>

@@ -21,6 +21,10 @@ public class EmployeeRepository : IEmployeeRepository
     {
         return _context.Employees.OrderBy(e => e.Id).ToList();
     }
+    public List<Employee> GetSome(int value)
+    {
+        return _context.Employees.OrderBy(e => e.Id).Take(value).ToList();
+    }
 
     public Employee GetById(int id)
     {
@@ -60,6 +64,7 @@ public class EmployeeRepository : IEmployeeRepository
     public void Delete(int id)
     {
         var employee = GetById(id);
+        FileExtention.RemoveFile(Path.Combine(_environment.WebRootPath, FOLDER_NAME, employee.ImageUrl));
         _context.Employees.Remove(employee);
         _context.SaveChanges();
     }

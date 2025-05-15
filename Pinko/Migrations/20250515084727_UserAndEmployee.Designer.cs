@@ -12,8 +12,8 @@ using Pinko.Database;
 namespace Pinko.Migrations
 {
     [DbContext(typeof(PinkoDbContext))]
-    [Migration("20250515054447_EmployeeAndUser")]
-    partial class EmployeeAndUser
+    [Migration("20250515084727_UserAndEmployee")]
+    partial class UserAndEmployee
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

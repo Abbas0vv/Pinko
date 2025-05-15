@@ -20,14 +20,14 @@ public static class FileExtention
     public static string UpdateFile(this IFormFile file, string webRootPath, string folderName, string oldUrl)
     {
         if(!file.IsValidFile()) return string.Empty;
-        RemoveFile(file, Path.Combine(webRootPath, folderName, oldUrl));
+        RemoveFile(Path.Combine(webRootPath, folderName, oldUrl));
         return file.CreateFile(webRootPath, folderName);
     }
 
-    public static void RemoveFile(IFormFile file, string path)
+    public static void RemoveFile(string path)
     {
-        if (!file.IsValidFile()) return;
-        if (path != null) System.IO.File.Delete(path);
+        if (path is null) return;
+        System.IO.File.Delete(path);
     }
 
     public static bool IsValidFile(this IFormFile file)
