@@ -20,7 +20,7 @@ namespace Pinko
                 options.UseSqlServer(connectionString));
 
             builder.Services.AddIdentity<PinkoUser, PinkoRole>()
-                .AddRoles<PinkoRole>()
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<PinkoDbContext>();
 
 

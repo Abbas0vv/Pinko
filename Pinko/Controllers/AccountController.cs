@@ -9,11 +9,13 @@ public class AccountController : Controller
 {
     private readonly UserManager<PinkoUser> _userManager;
     private readonly SignInManager<PinkoUser> _signInManager;
+    private readonly RoleManager<IdentityRole> _roleManager;
 
-    public AccountController(UserManager<PinkoUser> userManager, SignInManager<PinkoUser> signInManager)
+    public AccountController(UserManager<PinkoUser> userManager, SignInManager<PinkoUser> signInManager, RoleManager<IdentityRole> roleManager)
     {
         _userManager = userManager;
         _signInManager = signInManager;
+        _roleManager = roleManager;
     }
 
     [HttpGet]
@@ -44,6 +46,10 @@ public class AccountController : Controller
 
 
         await _signInManager.PasswordSignInAsync(user, model.Password, false, false);
+
+        await _userManager.AddToRoleAsync(user, "User");
+
+        
         return RedirectToAction("Index", "Home");
 
     }
