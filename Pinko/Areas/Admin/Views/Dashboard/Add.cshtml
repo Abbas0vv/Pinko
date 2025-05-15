@@ -1,0 +1,36 @@
+﻿@model EmployeeViewModel
+
+<div class="container flex-column">
+    <form asp-action="Add" enctype="multipart/form-data" method="post">
+        <div class="row">
+            <div class="mb-3 col-lg-4">
+                <label asp-for="Name" for="exampleFormControlInput1" class="form-label">Name</label>
+                <input asp-for="Name" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter your name">
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="mb-3 col-lg-4">
+                <label asp-for="Surname" for="exampleFormControlInput1" class="form-label">Surname</label>
+                <input asp-for="Surname" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter your surname">
+                <span asp-validation-for="Surname" class="text-danger"></span>
+            </div>
+            <div class="mb-3 col-lg-4">
+                <label asp-for="Position" for="exampleFormControlInput1" class="form-label">Position</label>
+                <input asp-for="Position" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter your Position">
+                <span asp-validation-for="Position" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label asp-for="About" for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+            <textarea asp-for="About" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Enter about yourself"></textarea>
+            <span asp-validation-for="About" class="text-danger"></span>    
+        </div>
+        <div class="custom-file mb-3">
+            <label asp-for="File" class="custom-file-label" for="inputGroupFile01">Your Image</label>
+            <input asp-for="File" type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+            <span asp-validation-for="File" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-success">Create</button>
+        <a class="btn btn-secondary" asp-action="Index">Back To Dashboard</a>
+    </form>
+</div>

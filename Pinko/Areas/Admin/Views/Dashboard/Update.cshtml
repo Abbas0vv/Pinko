@@ -1,0 +1,35 @@
+﻿@model EmployeeViewModel
+
+<div class="container flex-column">
+    <form asp-action="Update" enctype="multipart/form-data" method="post">
+        <div class="row">
+            <div class="mb-3 col-lg-4">
+                <label asp-for="Name" for="exampleFormControlInput1" class="form-label">Name</label>
+                <input asp-for="Name" type="text" class="form-control" id="exampleFormControlInput1" value="@Model.Name">
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="mb-3 col-lg-4">
+                <label asp-for="Surname" for="exampleFormControlInput1" class="form-label">Surname</label>
+                <input asp-for="Surname" type="text" class="form-control" id="exampleFormControlInput1" value="@Model.Surname">
+                <span asp-validation-for="Surname" class="text-danger"></span>
+            </div>
+            <div class="mb-3 col-lg-4">
+                <label asp-for="Position" for="exampleFormControlInput1" class="form-label">Surname</label>
+                <input asp-for="Position" type="text" class="form-control" id="exampleFormControlInput1" value="@Model.Position">
+                <span asp-validation-for="Position" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label asp-for="About" for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+            <textarea asp-for="About" class="form-control" id="exampleFormControlTextarea1" rows="3">@Model.About</textarea>
+            <span asp-validation-for="About" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="File" for="formFile" class="form-label">Your Image</label>
+            <input asp-for="File" class="form-control" type="file" id="formFile" value="@Model.File">
+            <span asp-validation-for="File" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-success">Save</button>
+        <a class="btn btn-secondary" asp-action="Index">Back To Dashboard</a>
+    </form>
+</div>
