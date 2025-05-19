@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Pinko.Database.ViewModels;
 
-public class EmployeeViewModel
+public class UpdateEmployeeViewModel
 {
     [MinLength(3)]
     public string Name { get; set; }

@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Pinko.Database.Repositories;
+using Pinko.Database.Interfaces;
 using Pinko.Database.ViewModels;
 
 namespace Pinko.Areas.Admin.Controllers;
@@ -7,9 +7,9 @@ namespace Pinko.Areas.Admin.Controllers;
 [Area("Admin")]
 public class DashboardController : Controller
 {
-    private EmployeeRepository _employeeRepository;
+    private IEmployeeRepository _employeeRepository;
 
-    public DashboardController(EmployeeRepository employeeRepository)
+    public DashboardController(IEmployeeRepository employeeRepository)
     {
         _employeeRepository = employeeRepository;
     }
@@ -22,7 +22,7 @@ public class DashboardController : Controller
     }
 
     [HttpPost]
-    public IActionResult Add(EmployeeViewModel model)
+    public IActionResult Add(CreateEmployeeViewModel model)
     {
         if (!ModelState.IsValid) return View(model);
         _employeeRepository.Insert(model);
@@ -45,7 +45,7 @@ public class DashboardController : Controller
     public IActionResult Update(int id)
     {
         var employee = _employeeRepository.GetById(id);
-        var model = new EmployeeViewModel()
+        var model = new UpdateEmployeeViewModel()
         {
             Name = employee.Name,
             Surname = employee.Surname,
@@ -56,7 +56,7 @@ public class DashboardController : Controller
     }
 
     [HttpPost]
-    public IActionResult Update(int id, EmployeeViewModel model)
+    public IActionResult Update(int id, UpdateEmployeeViewModel model)
     {
         if (!ModelState.IsValid) return View(model);
         _employeeRepository.Update(id, model);

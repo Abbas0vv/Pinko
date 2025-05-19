@@ -30,7 +30,7 @@ public class EmployeeRepository : IEmployeeRepository
     {
         return _context.Employees.FirstOrDefault(e => e.Id == id);
     }
-    public void Insert(EmployeeViewModel model)
+    public void Insert(CreateEmployeeViewModel model)
     {
         var employee = new Employee()
         {
@@ -45,7 +45,7 @@ public class EmployeeRepository : IEmployeeRepository
         _context.SaveChanges();
     }
 
-    public void Update(int id, EmployeeViewModel model)
+    public void Update(int id, UpdateEmployeeViewModel model)
     {
         var employee = GetById(id);
 

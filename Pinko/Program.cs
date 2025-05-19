@@ -43,7 +43,7 @@ namespace Pinko
                 opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
             });
 
-            builder.Services.AddScoped<EmployeeRepository>();
+            builder.Services.AddScoped<IEmployeeRepository ,EmployeeRepository>();
 
             var app = builder.Build();
 
